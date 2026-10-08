@@ -151,6 +151,13 @@ class TestResult extends Model
             default => [],
         };
 
+        // Rating tampil untuk semua tipe tes yang menyimpan rating
+        if ($this->test_type !== 'speed') { // speed sudah menampilkan rating lewat 'Kriteria'
+            foreach ($this->display_ratings as $label => $nilai) {
+                $values[$label === 'Rating' ? 'Rating' : $label . ' (rating)'] = $nilai;
+            }
+        }
+
         return array_filter($values, fn($value) => $value !== null && $value !== '');
     }
 
