@@ -36,7 +36,7 @@
                         @foreach ($mentalAssessments as $assessment)
                             <tr style="border-bottom: 1px solid rgba(0,230,118,0.1)">
                                 <td class="px-4 py-3">
-                                    <div class="font-semibold">{{ $assessment->athlete->name }}</div>
+                                    <div class="font-semibold">{{ $assessment->athlete?->name ?? '-' }}</div>
                                 </td>
                                 <td class="px-4 py-3">{{ $assessment->assessment_date->format('d M Y H:i') }}</td>
                                 <td class="px-4 py-3 text-center">
@@ -74,7 +74,7 @@
                         @foreach ($taktikAssessments as $assessment)
                             <tr style="border-bottom: 1px solid rgba(0,230,118,0.1)">
                                 <td class="px-4 py-3">
-                                    <div class="font-semibold">{{ $assessment->athlete->name }}</div>
+                                    <div class="font-semibold">{{ $assessment->athlete?->name ?? '-' }}</div>
                                 </td>
                                 <td class="px-4 py-3">{{ $assessment->assessment_date->format('d M Y H:i') }}</td>
                                 <td class="px-4 py-3 text-center">

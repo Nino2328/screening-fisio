@@ -75,7 +75,7 @@ class ReportsController extends Controller
 
             foreach ($mentalAssessments as $assessment) {
                 fputcsv($handle, [
-                    $assessment->athlete->name,
+                    $assessment->athlete?->name ?? '-',
                     $assessment->assessment_date->format('d M Y H:i'),
                     $assessment->fokus,
                     $assessment->motivasi,
@@ -108,7 +108,7 @@ class ReportsController extends Controller
 
             foreach ($taktikAssessments as $assessment) {
                 fputcsv($handle, [
-                    $assessment->athlete->name,
+                    $assessment->athlete?->name ?? '-',
                     $assessment->assessment_date->format('d M Y H:i'),
                     $assessment->pengambilan_keputusan,
                     $assessment->pemahaman_taktik,
