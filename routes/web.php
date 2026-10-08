@@ -19,8 +19,6 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
-    Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
-    Route::post('/register', [RegisterController::class, 'register']);
     // Password reset (Laravel built-in)
     Route::get('/forgot-password', fn() => view('auth.forgot-password'))->name('password.request');
 });

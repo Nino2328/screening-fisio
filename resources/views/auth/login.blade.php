@@ -81,11 +81,6 @@
                 </div>
                 <button type="submit" class="btn-primary w-full py-3">Masuk</button>
             </form>
-
-            <p class="text-center text-sm mt-6" style="color:#7A8D9E">
-                Belum punya akun?
-                <a href="{{ route('register') }}" class="hover:text-white transition" style="color:#00E676">Daftar</a>
-            </p>
         </div>
     </div>
 
