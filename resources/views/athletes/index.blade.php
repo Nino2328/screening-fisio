@@ -298,7 +298,13 @@
                         photoField.setAttribute('data-current-photo', athlete.photo);
                         const photoLabel = photoField.nextElementSibling;
                         if (photoLabel) {
-                            photoLabel.innerHTML = `<span style="color:#00E676">Foto saat ini: ${athlete.photo.split('/').pop()}</span><br>Format: JPG, PNG, GIF. Maksimal 2MB.`;
+                            photoLabel.textContent = '';
+                            const namaFoto = document.createElement('span');
+                            namaFoto.style.color = '#00E676';
+                            namaFoto.textContent = 'Foto saat ini: ' + athlete.photo.split('/').pop();
+                            photoLabel.appendChild(namaFoto);
+                            photoLabel.appendChild(document.createElement('br'));
+                            photoLabel.appendChild(document.createTextNode('Format: JPG, PNG, GIF. Maksimal 2MB.'));
                         }
                     } else {
                         photoField.removeAttribute('data-current-photo');

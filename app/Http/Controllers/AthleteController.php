@@ -6,6 +6,7 @@ use App\Models\MentalAssessment;
 use App\Models\TaktikAssessment;
 use App\Models\TestResult;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AthleteController extends Controller
 {
@@ -33,7 +34,7 @@ class AthleteController extends Controller
             // Handle photo upload
             if ($request->hasFile('photo')) {
                 $photo = $request->file('photo');
-                $photoName = time() . '_' . $photo->getClientOriginalName();
+                $photoName = Str::uuid() . '.' . $photo->extension();
                 $photo->move(public_path('uploads/athletes'), $photoName);
                 $data['photo'] = 'uploads/athletes/' . $photoName;
             }
@@ -200,12 +201,12 @@ class AthleteController extends Controller
             // Handle photo upload
             if ($request->hasFile('photo')) {
                 // Delete old photo if exists
-                if ($athlete->photo && file_exists(public_path($athlete->photo))) {
+                if ($athlete->photo && str_starts_with($athlete->photo, 'uploads/athletes/') && file_exists(public_path($athlete->photo))) {
                     unlink(public_path($athlete->photo));
                 }
 
                 $photo = $request->file('photo');
-                $photoName = time() . '_' . $photo->getClientOriginalName();
+                $photoName = Str::uuid() . '.' . $photo->extension();
                 $photo->move(public_path('uploads/athletes'), $photoName);
                 $data['photo'] = 'uploads/athletes/' . $photoName;
             }
