@@ -9,7 +9,7 @@
         <div>
             <p class="text-sm" style="color:#7A8D9E">Kelola data atlet yang mengikuti screening fisioterapi</p>
         </div>
-        @if(auth()->user()->role !== 'pelatih')
+        @if(in_array(auth()->user()->role, ['admin', 'fisio'], true))
         <button onclick="openAddAthlete()"
             class="px-4 py-2 rounded-lg text-sm font-semibold transition hover:-translate-y-px"
             style="background:#00E676; color:#080C10">
@@ -77,7 +77,7 @@
                                             style="background:rgba(0,230,118,0.2); color:#00E676">
                                             Lihat
                                         </a>
-                                        @if(auth()->user()->role !== 'pelatih')
+                                        @if(in_array(auth()->user()->role, ['admin', 'fisio'], true))
                                          <button onclick="editAthlete({{ $athlete->id }})"
                                             class="px-3 py-1 rounded text-xs font-semibold transition hover:bg-opacity-80"
                                             style="background:rgba(255,152,0,0.2); color:#FFB74D">
@@ -88,6 +88,7 @@
                                             style="background:rgba(255,68,68,0.2); color:#FF4444">
                                             Hapus
                                         </button>
+                                         @endif
                                     </div>
                                 </td>
                             </tr>
@@ -109,11 +110,13 @@
         @else
             <div class="text-center py-12">
                 <p class="text-lg mb-2" style="color:#7A8D9E">Belum ada data atlet</p>
+                @if(in_array(auth()->user()->role, ['admin', 'fisio'], true))
                 <button onclick="openAddAthlete()"
                     class="px-4 py-2 rounded-lg text-sm font-semibold transition hover:-translate-y-px"
                     style="background:#00E676; color:#080C10">
                     Tambah Atlet Pertama
                 </button>
+                @endif
             </div>
         @endif
     </div>
