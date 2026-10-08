@@ -16,7 +16,7 @@ class DashboardController extends Controller
     {
         $isAdmin = auth()->user()->role === 'admin';
         $isCoach = auth()->user()->role === 'pelatih';
-        $includePhysical = !$isCoach;
+        $includePhysical = in_array(auth()->user()->role, ['admin', 'fisio'], true);
         $includeCoachAssessments = $isAdmin || $isCoach;
 
         // Total Atlet Aktif - REAL-TIME
