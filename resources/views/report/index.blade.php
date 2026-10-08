@@ -18,10 +18,10 @@
 
 
     {{-- Controls --}}
-    <div class="flex items-center justify-between mb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
 
-        <div class="flex gap-2">
-            <form method="GET" action="{{ route('report.index') }}" id="filterForm" class="flex gap-2">
+        <div class="flex flex-wrap gap-2">
+            <form method="GET" action="{{ route('report.index') }}" id="filterForm" class="flex flex-wrap gap-2">
                 <select name="position" class="text-sm px-3 py-2 rounded-lg outline-none"
                     style="background:#141B22; border:1px solid rgba(0,230,118,0.2); color:#E8F0F7"
                     onchange="this.form.submit()">
@@ -39,7 +39,7 @@
                     onchange="this.form.submit()">
             </form>
         </div>
-        <div class="flex gap-2">
+        <div class="flex flex-wrap gap-2">
             <a href="{{ route('report.export.pdf') }}" target="_blank"
                 class="px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition hover:-translate-y-px"
                 style="background:rgba(255,68,68,0.15); color:#FF4444; border:1px solid rgba(255,68,68,0.3)">
