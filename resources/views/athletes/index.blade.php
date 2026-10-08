@@ -133,15 +133,19 @@
             </div>
 
             {{-- Validation Errors --}}
-            <div id="errorAlert" class="hidden mb-4 px-4 py-3 rounded-xl text-sm"
+            <div id="errorAlert" class="{{ $errors->any() ? '' : 'hidden' }} mb-4 px-4 py-3 rounded-xl text-sm"
                 style="background:rgba(255,68,68,0.1); border:1px solid rgba(255,68,68,0.3); color:#FF4444">
-                <ul id="errorList" class="list-disc list-inside"></ul>
+                <ul id="errorList" class="list-disc list-inside">
+                    @foreach ($errors->all() as $pesan)
+                        <li>{{ $pesan }}</li>
+                    @endforeach
+                </ul>
             </div>
 
             <form id="athleteForm" method="POST" action="{{ route('athletes.store') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" id="athleteMethod" name="_method" value="POST">
-                <input type="hidden" id="athleteId" name="athlete_id">
+                <input type="hidden" id="athleteId" name="athlete_id" value="{{ old('athlete_id') }}">
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {{-- Nama --}}
@@ -150,7 +154,7 @@
                         <input type="text" id="fieldName" name="name" required
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676"
-                            placeholder="Contoh: Aldo Pratama">
+                            placeholder="Contoh: Aldo Pratama" value="{{ old('name') }}">
                     </div>
 
                     {{-- Posisi --}}
@@ -160,10 +164,10 @@
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676">
                             <option value="">Pilih Posisi</option>
-                            <option value="Kiper">Kiper</option>
-                            <option value="Bek">Bek</option>
-                            <option value="Gelandang">Gelandang</option>
-                            <option value="Penyerang">Penyerang</option>
+                            <option value="Kiper" {{ old('position') === 'Kiper' ? 'selected' : '' }}>Kiper</option>
+                            <option value="Bek" {{ old('position') === 'Bek' ? 'selected' : '' }}>Bek</option>
+                            <option value="Gelandang" {{ old('position') === 'Gelandang' ? 'selected' : '' }}>Gelandang</option>
+                            <option value="Penyerang" {{ old('position') === 'Penyerang' ? 'selected' : '' }}>Penyerang</option>
                         </select>
                     </div>
 
@@ -173,13 +177,13 @@
                         <input type="text" id="fieldBirthPlace" name="birth_place"
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676"
-                            placeholder="Yogyakarta">
+                            placeholder="Yogyakarta" value="{{ old('birth_place') }}">
                     </div>
 
                     {{-- Tanggal Lahir --}}
                     <div class="mt-4">
                         <label class="block text-sm font-semibold mb-2">Tanggal Lahir</label>
-                        <input type="date" id="fieldBirthDate" name="birth_date"
+                        <input type="date" id="fieldBirthDate" name="birth_date" value="{{ old('birth_date') }}"
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676">
                     </div>
@@ -190,7 +194,7 @@
                         <input type="number" id="fieldAge" name="age" min="1" max="100"
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676"
-                            placeholder="25">
+                            placeholder="25" value="{{ old('age') }}">
                     </div>
 
                     {{-- Jenis Kelamin --}}
@@ -200,8 +204,8 @@
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676">
                             <option value="">Pilih Jenis Kelamin</option>
-                            <option value="M">Laki-laki</option>
-                            <option value="F">Perempuan</option>
+                            <option value="M" {{ old('gender') === 'M' ? 'selected' : '' }}>Laki-laki</option>
+                            <option value="F" {{ old('gender') === 'F' ? 'selected' : '' }}>Perempuan</option>
                         </select>
                     </div>
 
@@ -211,7 +215,7 @@
                         <input type="number" id="fieldHeight" name="height" step="0.1" min="0"
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676"
-                            placeholder="180">
+                            placeholder="180" value="{{ old('height') }}">
                     </div>
 
                     {{-- Berat --}}
@@ -220,7 +224,7 @@
                         <input type="number" id="fieldWeight" name="weight" step="0.1" min="0"
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676"
-                            placeholder="75">
+                            placeholder="75" value="{{ old('weight') }}">
                     </div>
 
                     {{-- Telepon --}}
@@ -229,7 +233,7 @@
                         <input type="tel" id="fieldPhone" name="phone"
                             class="w-full px-4 py-2 rounded-lg outline-none focus:ring-1 text-white"
                             style="background:#141B22; border:1px solid rgba(0,230,118,0.15); --tw-ring-color:#00E676"
-                            placeholder="08123456789">
+                            placeholder="08123456789" value="{{ old('phone') }}">
                     </div>
 
                     {{-- Foto --}}
@@ -362,6 +366,20 @@
             errorList.innerHTML = `<li>${message}</li>`;
             document.getElementById('errorAlert').classList.remove('hidden');
         }
+
+        // Buka kembali modal + tampilkan pesan validasi bila submit ditolak server
+        @if ($errors->any())
+            (function () {
+                var editId = @json(old('athlete_id'));
+                if (editId) {
+                    document.getElementById('athleteForm').action = "{{ url('athletes') }}/" + editId;
+                    document.getElementById('athleteMethod').value = 'PUT';
+                    document.getElementById('modalTitle').textContent = 'Edit Data Atlet';
+                    document.getElementById('submitBtn').textContent = 'Update Atlet';
+                }
+                document.getElementById('athleteModal').classList.remove('hidden');
+            })();
+        @endif
 
         // Form submission dengan fallback ke regular form submission
         const form = document.getElementById('athleteForm');

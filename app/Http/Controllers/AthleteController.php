@@ -21,7 +21,7 @@ class AthleteController extends Controller
             $data = $request->validate([
                 'name' => 'required|string|max:100',
                 'birth_place' => 'nullable|string|max:100',
-                'birth_date' => 'nullable|date',
+                'birth_date' => 'nullable|date|before_or_equal:today',
                 'age' => 'nullable|integer',
                 'gender' => 'nullable|string',
                 'position' => 'nullable|string',
@@ -29,6 +29,18 @@ class AthleteController extends Controller
                 'weight' => 'nullable|numeric',
                 'phone' => 'nullable|string',
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'name.required' => 'Nama lengkap wajib diisi.',
+                'name.max' => 'Nama lengkap maksimal 100 karakter.',
+                'birth_place.max' => 'Tempat lahir maksimal 100 karakter.',
+                'birth_date.date' => 'Format tanggal lahir tidak valid.',
+                'birth_date.before_or_equal' => 'Tanggal lahir tidak boleh melewati hari ini.',
+                'age.integer' => 'Usia harus berupa angka bulat.',
+                'height.numeric' => 'Tinggi badan harus berupa angka.',
+                'weight.numeric' => 'Berat badan harus berupa angka.',
+                'photo.image' => 'Foto harus berupa file gambar.',
+                'photo.mimes' => 'Foto harus berformat JPG, JPEG, PNG, atau GIF.',
+                'photo.max' => 'Ukuran foto maksimal 2 MB.',
             ]);
 
             // Handle photo upload
@@ -188,7 +200,7 @@ class AthleteController extends Controller
             $data = $request->validate([
                 'name' => 'required|string|max:100',
                 'birth_place' => 'nullable|string|max:100',
-                'birth_date' => 'nullable|date',
+                'birth_date' => 'nullable|date|before_or_equal:today',
                 'age' => 'nullable|integer',
                 'gender' => 'nullable|string',
                 'position' => 'nullable|string',
@@ -196,6 +208,18 @@ class AthleteController extends Controller
                 'weight' => 'nullable|numeric',
                 'phone' => 'nullable|string',
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'name.required' => 'Nama lengkap wajib diisi.',
+                'name.max' => 'Nama lengkap maksimal 100 karakter.',
+                'birth_place.max' => 'Tempat lahir maksimal 100 karakter.',
+                'birth_date.date' => 'Format tanggal lahir tidak valid.',
+                'birth_date.before_or_equal' => 'Tanggal lahir tidak boleh melewati hari ini.',
+                'age.integer' => 'Usia harus berupa angka bulat.',
+                'height.numeric' => 'Tinggi badan harus berupa angka.',
+                'weight.numeric' => 'Berat badan harus berupa angka.',
+                'photo.image' => 'Foto harus berupa file gambar.',
+                'photo.mimes' => 'Foto harus berformat JPG, JPEG, PNG, atau GIF.',
+                'photo.max' => 'Ukuran foto maksimal 2 MB.',
             ]);
 
             // Handle photo upload
