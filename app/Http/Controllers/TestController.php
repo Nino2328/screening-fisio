@@ -9,6 +9,20 @@ use App\Models\TestResult;
 class TestController extends Controller
 {
     /**
+     * Aturan validasi kolom identitas & tanda vital — dipakai semua form tes.
+     * gender wajib dipilih di form (x-athlete-identity); tinggi, berat & vital opsional.
+     */
+    private array $identityRules = [
+        'gender' => 'required|in:putra,putri',
+        'height' => 'nullable|numeric|min:0',
+        'weight' => 'nullable|numeric|min:0',
+        'vital_td' => 'nullable|string',
+        'vital_suhu' => 'nullable|string',
+        'vital_nadi' => 'nullable|string',
+        'vital_respirasi' => 'nullable|string',
+    ];
+
+    /**
      * Semua Tes — index page
      */
     public function index()
@@ -50,14 +64,10 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
-            'gender' => 'required|in:putra,putri',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
-            'vital_td' => 'nullable|string',
-            'vital_suhu' => 'nullable|string',
-            'vital_nadi' => 'nullable|string',
-            'vital_respirasi' => 'nullable|string',
             'complaint' => 'nullable|string',
             'distance' => 'required|numeric|min:0',
             'level' => 'nullable|string',
@@ -84,14 +94,10 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
-            'gender' => 'required|in:putra,putri',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
-            'vital_td' => 'nullable|string',
-            'vital_suhu' => 'nullable|string',
-            'vital_nadi' => 'nullable|string',
-            'vital_respirasi' => 'nullable|string',
             'complaint' => 'nullable|string',
             'time_seconds' => 'required|numeric|min:0',
             'score' => 'nullable|integer|min:1|max:5',
@@ -118,14 +124,10 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
-            'gender' => 'required|in:putra,putri,pria,wanita',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
-            'vital_td' => 'nullable|string',
-            'vital_suhu' => 'nullable|string',
-            'vital_nadi' => 'nullable|string',
-            'vital_respirasi' => 'nullable|string',
             'complaint' => 'nullable|string',
             'hex_time1' => 'nullable|numeric',
             'hex_time2' => 'nullable|numeric',
@@ -155,7 +157,7 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
-            'gender' => 'required|in:putra,putri',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
@@ -190,7 +192,7 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
-            'gender' => 'required|in:putra,putri,pria,wanita',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
@@ -222,6 +224,7 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
@@ -258,6 +261,7 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
@@ -285,6 +289,7 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
@@ -315,6 +320,7 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
@@ -345,6 +351,7 @@ class TestController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'age' => 'nullable|integer',
+            ...$this->identityRules,
             'position' => 'nullable|string',
             'test_date' => 'required|date',
             'phone' => 'nullable|string',
