@@ -74,10 +74,7 @@
                     <label class="flex items-center gap-2 text-sm cursor-pointer" style="color:#7A8D9E">
                         <input type="checkbox" name="remember" class="rounded"> Ingat saya
                     </label>
-                    <a href="{{ route('password.request') }}" class="text-sm hover:text-white transition"
-                        style="color:#00E676">
-                        Lupa password?
-                    </a>
+                    <span class="text-sm" style="color:#7A8D9E">Lupa password? Hubungi administrator.</span>
                 </div>
                 <button type="submit" class="btn-primary w-full py-3">Masuk</button>
             </form>
