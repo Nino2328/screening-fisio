@@ -9,7 +9,6 @@ use App\Http\Controllers\MentalController;
 use App\Http\Controllers\TaktikController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
