@@ -102,11 +102,11 @@ class AthleteController extends Controller
                 str_contains($rating, 'di bawah'),
                 str_contains($rating, 'dibawah'),
                 str_contains($rating, 'kurang'),
-                str_contains($rating, 'weak') => 2.0,
+                str_contains($rating, 'weak'),
+                str_contains($rating, 'fair') => 2.0, // Fair di bawah Average pada form Fleksibilitas
                 str_contains($rating, 'average'),
                 str_contains($rating, 'rata-rata'),
                 str_contains($rating, 'rata rata'),
-                str_contains($rating, 'fair'),
                 str_contains($rating, 'cukup') => 3.0,
                 str_contains($rating, 'poor'),
                 str_contains($rating, 'miskin'),
