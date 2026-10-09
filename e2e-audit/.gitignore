@@ -1,0 +1,8 @@
+node_modules/
+test-results/
+state/
+screenshots/
+report.json
+notes-backup.json
+network-log.json
+qa-athletes.json
