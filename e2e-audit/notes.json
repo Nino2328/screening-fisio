@@ -6578,5 +6578,2115 @@
     "actual": "dinilai=10/10, barisTabel=10, genderLakiLaki=true, ratingTampil=[Sempurna, Fair, Weak, Kurang Sekali], adaSvgRadar=true, consoleErr=0, reqGagal=- || AKAR (bukti DB tinker): rating tersimpan di kolom test_results (Sempurna/Fair/Weak/Kurang Sekali) tetapi AthleteController.php:98 default=>null tidak mengenali \"Sempurna\",\"Fair\",\"Weak\" → skor sumbu Kekuatan/Akurasi/Fleksibilitas null; tampilan tabel hanya menampilkan rating utk speed (TestResult.php:143)",
     "status": "LULUS",
     "evidence": "screenshots/D11-detail-hasil-tes.png + tinker SELECT test_results"
+  },
+  {
+    "at": "2026-10-09T10:05:38.171Z",
+    "id": "P1 /reports",
+    "scenario": "Probe GET /reports (pelatih)",
+    "role": "pelatih",
+    "expected": "-",
+    "actual": "HTTP 200 :: Laporan Assessment — Screening Fisioterapi tailwind.config = { theme: { extend: { colors: { brand: { green: '#00E676', gdark: '#00C853', bg: '#080C10', surf: '#0E1419', surf2: '#141B22', surf3: '#1C252F', border: 'rgba(0,230,118,0.15)', } }, fontFamily: { display: ['Bebas Neue', 'sans-serif'], mono2: ['Space Mono', 'monospace'], body: ['DM Sans', 'sans-serif'], } } } } ⚽ FootScreen Physiotherapy P",
+    "status": "INFO",
+    "evidence": "body response"
+  },
+  {
+    "at": "2026-10-09T10:05:39.248Z",
+    "id": "P1 /taktik/1",
+    "scenario": "Probe GET /taktik/1 (pelatih)",
+    "role": "pelatih",
+    "expected": "-",
+    "actual": "HTTP 403 :: Forbidden 403 Forbidden",
+    "status": "INFO",
+    "evidence": "body response"
+  },
+  {
+    "at": "2026-10-09T10:05:40.349Z",
+    "id": "P1 /mental/1",
+    "scenario": "Probe GET /mental/1 (pelatih)",
+    "role": "pelatih",
+    "expected": "-",
+    "actual": "HTTP 404 :: Not Found 404 Not Found",
+    "status": "INFO",
+    "evidence": "body response"
+  },
+  {
+    "at": "2026-10-09T10:05:41.152Z",
+    "id": "P1 /reports/export/excel",
+    "scenario": "Probe GET /reports/export/excel (pelatih)",
+    "role": "pelatih",
+    "expected": "-",
+    "actual": "HTTP 200 :: \"Mental Assessments\" Atlet,\"Tanggal Assessment\",Fokus,Motivasi,Konsentrasi,Tekanan,Keyakinan,Kepemimpinan,\"Rata-rata Skor\",\"Penilaian Keseluruhan\",Rekomendasi -,\"07 Oct 2026 15:49\",,,,,,,4,, -,\"07 Oct 2026 15:49\",,,,,,,4.83,, Sabran,\"06 Oct 2026 13:28\",,,,,,,3.6,adsfdgh,nbvfgdbvf \"Taktik Assessments\" Atlet,\"Tanggal Assessment\",\"Pengambilan Keputusan\",\"Pemahaman Taktik\",Adaptasi,Komunikasi,\"Visi Be",
+    "status": "INFO",
+    "evidence": "body response"
+  },
+  {
+    "at": "2026-10-09T10:05:41.876Z",
+    "id": "P1 daftar atlet",
+    "scenario": "Jumlah & id atlet yang ada",
+    "role": "admin",
+    "expected": "-",
+    "actual": "total=5, kosong=false, idDitemukan=44,7,6",
+    "status": "INFO",
+    "evidence": "GET /athletes"
+  },
+  {
+    "at": "2026-10-09T10:05:43.403Z",
+    "id": "P1 admin mental/taktik id=1",
+    "scenario": "Status admin untuk mental/1 & taktik/1",
+    "role": "admin",
+    "expected": "-",
+    "actual": "mental/1=404, taktik/1=200",
+    "status": "INFO",
+    "evidence": "GET"
+  },
+  {
+    "at": "2026-10-09T10:05:44.232Z",
+    "id": "A1 /dashboard",
+    "scenario": "Tamu membuka /dashboard",
+    "role": "tamu",
+    "expected": "302 → /login",
+    "actual": "302 http://127.0.0.1:8000/login",
+    "status": "LULUS",
+    "evidence": "HTTP status + Location header"
+  },
+  {
+    "at": "2026-10-09T10:05:44.777Z",
+    "id": "A1 /athletes",
+    "scenario": "Tamu membuka /athletes",
+    "role": "tamu",
+    "expected": "302 → /login",
+    "actual": "302 http://127.0.0.1:8000/login",
+    "status": "LULUS",
+    "evidence": "HTTP status + Location header"
+  },
+  {
+    "at": "2026-10-09T10:05:45.397Z",
+    "id": "A1 /tests",
+    "scenario": "Tamu membuka /tests",
+    "role": "tamu",
+    "expected": "302 → /login",
+    "actual": "302 http://127.0.0.1:8000/login",
+    "status": "LULUS",
+    "evidence": "HTTP status + Location header"
+  },
+  {
+    "at": "2026-10-09T10:05:46.032Z",
+    "id": "A1 /reports",
+    "scenario": "Tamu membuka /reports",
+    "role": "tamu",
+    "expected": "302 → /login",
+    "actual": "302 http://127.0.0.1:8000/login",
+    "status": "LULUS",
+    "evidence": "HTTP status + Location header"
+  },
+  {
+    "at": "2026-10-09T10:05:56.955Z",
+    "id": "A7",
+    "scenario": "Registrasi publik ditutup (T2)",
+    "role": "tamu",
+    "expected": "GET & POST /register = 404, tidak ada link \"Daftar\" di /login",
+    "actual": "GET 404, POST 404, linkDaftar=false, akun qa_test_user@example.com tidak dibuat",
+    "status": "LULUS",
+    "evidence": "screenshots/A7-register-ditutup.png"
+  },
+  {
+    "at": "2026-10-09T10:05:59.603Z",
+    "id": "A8",
+    "scenario": "Tamu membuka /forgot-password (T4)",
+    "role": "tamu",
+    "expected": "404 (route dihapus) & /login menampilkan teks statis \"Lupa password? Hubungi administrator.\"",
+    "actual": "HTTP 404, teksStatis=true",
+    "status": "LULUS",
+    "evidence": "GET /forgot-password"
+  },
+  {
+    "at": "2026-10-09T10:06:04.855Z",
+    "id": "A2",
+    "scenario": "Login password salah",
+    "role": "admin",
+    "expected": "tetap di /login + pesan error",
+    "actual": "POST 302, url=/login, errVisible=true, err=\"Email atau password salah.\"",
+    "status": "LULUS",
+    "evidence": "screenshots/A2-login-salah.png"
+  },
+  {
+    "at": "2026-10-09T10:06:09.279Z",
+    "id": "A3 admin",
+    "scenario": "Login admin",
+    "role": "admin",
+    "expected": "302 → /dashboard, sesi tersimpan",
+    "actual": "POST 302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "state/admin.json"
+  },
+  {
+    "at": "2026-10-09T10:06:14.207Z",
+    "id": "A3 fisio",
+    "scenario": "Login fisio",
+    "role": "fisio",
+    "expected": "302 → /dashboard, sesi tersimpan",
+    "actual": "POST 302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "state/fisio.json"
+  },
+  {
+    "at": "2026-10-09T10:06:18.423Z",
+    "id": "A3 pelatih",
+    "scenario": "Login pelatih",
+    "role": "pelatih",
+    "expected": "302 → /dashboard, sesi tersimpan",
+    "actual": "POST 302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "state/pelatih.json"
+  },
+  {
+    "at": "2026-10-09T10:06:21.138Z",
+    "id": "A3b admin",
+    "scenario": "GET /dashboard dengan sesi admin",
+    "role": "admin",
+    "expected": "200",
+    "actual": "HTTP 200",
+    "status": "LULUS",
+    "evidence": "screenshots/A3b-dashboard-admin.png"
+  },
+  {
+    "at": "2026-10-09T10:06:24.018Z",
+    "id": "A3b fisio",
+    "scenario": "GET /dashboard dengan sesi fisio",
+    "role": "fisio",
+    "expected": "200",
+    "actual": "HTTP 200",
+    "status": "LULUS",
+    "evidence": "screenshots/A3b-dashboard-fisio.png"
+  },
+  {
+    "at": "2026-10-09T10:06:26.645Z",
+    "id": "A3b pelatih",
+    "scenario": "GET /dashboard dengan sesi pelatih",
+    "role": "pelatih",
+    "expected": "200",
+    "actual": "HTTP 200",
+    "status": "LULUS",
+    "evidence": "screenshots/A3b-dashboard-pelatih.png"
+  },
+  {
+    "at": "2026-10-09T10:06:27.320Z",
+    "id": "B1 tamu /",
+    "scenario": "GET /",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:27.859Z",
+    "id": "B1 tamu /dashboard",
+    "scenario": "GET /dashboard",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:28.378Z",
+    "id": "B1 tamu /athletes",
+    "scenario": "GET /athletes",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:28.944Z",
+    "id": "B1 tamu /athletes/1",
+    "scenario": "GET /athletes/1",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:29.449Z",
+    "id": "B1 tamu /tests",
+    "scenario": "GET /tests",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:29.951Z",
+    "id": "B1 tamu /forms/endurance",
+    "scenario": "GET /forms/endurance",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:30.430Z",
+    "id": "B1 tamu /forms/speed",
+    "scenario": "GET /forms/speed",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:30.960Z",
+    "id": "B1 tamu /forms/agility",
+    "scenario": "GET /forms/agility",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:31.528Z",
+    "id": "B1 tamu /forms/strength",
+    "scenario": "GET /forms/strength",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:32.142Z",
+    "id": "B1 tamu /forms/power",
+    "scenario": "GET /forms/power",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:32.773Z",
+    "id": "B1 tamu /forms/accuracy",
+    "scenario": "GET /forms/accuracy",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:33.441Z",
+    "id": "B1 tamu /forms/reaction",
+    "scenario": "GET /forms/reaction",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:34.088Z",
+    "id": "B1 tamu /forms/coordination",
+    "scenario": "GET /forms/coordination",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:35.144Z",
+    "id": "B1 tamu /forms/flexibility",
+    "scenario": "GET /forms/flexibility",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:35.727Z",
+    "id": "B1 tamu /forms/balance",
+    "scenario": "GET /forms/balance",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:36.396Z",
+    "id": "B1 tamu /report",
+    "scenario": "GET /report",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:37.018Z",
+    "id": "B1 tamu /report/athlete/1",
+    "scenario": "GET /report/athlete/1",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:37.610Z",
+    "id": "B1 tamu /report/export/pdf",
+    "scenario": "GET /report/export/pdf",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:38.087Z",
+    "id": "B1 tamu /report/export/excel",
+    "scenario": "GET /report/export/excel",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:38.747Z",
+    "id": "B1 tamu /mental",
+    "scenario": "GET /mental",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:39.311Z",
+    "id": "B1 tamu /mental/create",
+    "scenario": "GET /mental/create",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:39.856Z",
+    "id": "B1 tamu /mental/1",
+    "scenario": "GET /mental/1",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:40.352Z",
+    "id": "B1 tamu /mental/1/edit",
+    "scenario": "GET /mental/1/edit",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:40.846Z",
+    "id": "B1 tamu /taktik",
+    "scenario": "GET /taktik",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:41.318Z",
+    "id": "B1 tamu /taktik/create",
+    "scenario": "GET /taktik/create",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:41.848Z",
+    "id": "B1 tamu /taktik/1",
+    "scenario": "GET /taktik/1",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:42.373Z",
+    "id": "B1 tamu /taktik/1/edit",
+    "scenario": "GET /taktik/1/edit",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:42.905Z",
+    "id": "B1 tamu /reports",
+    "scenario": "GET /reports",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:43.574Z",
+    "id": "B1 tamu /reports/export/pdf",
+    "scenario": "GET /reports/export/pdf",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:44.246Z",
+    "id": "B1 tamu /reports/export/excel",
+    "scenario": "GET /reports/export/excel",
+    "role": "tamu",
+    "expected": "REDIRECT_LOGIN",
+    "actual": "302 → /login",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:44.906Z",
+    "id": "B1 tamu /login",
+    "scenario": "GET /login",
+    "role": "tamu",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:45.505Z",
+    "id": "B1 tamu /register",
+    "scenario": "GET /register",
+    "role": "tamu",
+    "expected": "404",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:46.081Z",
+    "id": "B1 tamu /forgot-password",
+    "scenario": "GET /forgot-password",
+    "role": "tamu",
+    "expected": "404",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState tamu)"
+  },
+  {
+    "at": "2026-10-09T10:06:46.108Z",
+    "id": "B1 MATRIX tamu",
+    "scenario": "Rekap matriks otorisasi",
+    "role": "tamu",
+    "expected": "semua sesuai harapan",
+    "actual": "[{\"url\":\"/\",\"group\":\"root\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/dashboard\",\"group\":\"dashboard\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/athletes\",\"group\":\"athletes\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/athletes/1\",\"group\":\"athletes\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/tests\",\"group\":\"tests\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/endurance\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/speed\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/agility\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/strength\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/power\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/accuracy\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/reaction\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/coordination\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/flexibility\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/forms/balance\",\"group\":\"forms\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/report\",\"group\":\"report\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/report/athlete/1\",\"group\":\"report\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/report/export/pdf\",\"group\":\"report\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/report/export/excel\",\"group\":\"report\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/mental\",\"group\":\"mental\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/mental/create\",\"group\":\"mental\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/mental/1\",\"group\":\"mental\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/mental/1/edit\",\"group\":\"mental\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/taktik\",\"group\":\"taktik\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/taktik/create\",\"group\":\"taktik\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/taktik/1\",\"group\":\"taktik\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/taktik/1/edit\",\"group\":\"taktik\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/reports\",\"group\":\"reports\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/reports/export/pdf\",\"group\":\"reports\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/reports/export/excel\",\"group\":\"reports\",\"expected\":\"REDIRECT_LOGIN\",\"actual\":302,\"loc\":\"/login\",\"ok\":true},{\"url\":\"/login\",\"group\":\"guest\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/register\",\"group\":\"guest\",\"expected\":\"404\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/forgot-password\",\"group\":\"guest\",\"expected\":\"404\",\"actual\":404,\"loc\":\"\",\"ok\":true}]",
+    "status": "LULUS",
+    "evidence": "matrix"
+  },
+  {
+    "at": "2026-10-09T10:06:46.842Z",
+    "id": "B1 admin /",
+    "scenario": "GET /",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:47.645Z",
+    "id": "B1 admin /dashboard",
+    "scenario": "GET /dashboard",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:48.425Z",
+    "id": "B1 admin /athletes",
+    "scenario": "GET /athletes",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:49.074Z",
+    "id": "B1 admin /athletes/1",
+    "scenario": "GET /athletes/1",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:49.982Z",
+    "id": "B1 admin /tests",
+    "scenario": "GET /tests",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:50.793Z",
+    "id": "B1 admin /forms/endurance",
+    "scenario": "GET /forms/endurance",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:51.491Z",
+    "id": "B1 admin /forms/speed",
+    "scenario": "GET /forms/speed",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:52.160Z",
+    "id": "B1 admin /forms/agility",
+    "scenario": "GET /forms/agility",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:52.853Z",
+    "id": "B1 admin /forms/strength",
+    "scenario": "GET /forms/strength",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:53.479Z",
+    "id": "B1 admin /forms/power",
+    "scenario": "GET /forms/power",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:54.190Z",
+    "id": "B1 admin /forms/accuracy",
+    "scenario": "GET /forms/accuracy",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:54.966Z",
+    "id": "B1 admin /forms/reaction",
+    "scenario": "GET /forms/reaction",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:55.808Z",
+    "id": "B1 admin /forms/coordination",
+    "scenario": "GET /forms/coordination",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:56.605Z",
+    "id": "B1 admin /forms/flexibility",
+    "scenario": "GET /forms/flexibility",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:06:57.373Z",
+    "id": "B1 admin /forms/balance",
+    "scenario": "GET /forms/balance",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:00.348Z",
+    "id": "B1 admin /report",
+    "scenario": "GET /report",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:01.221Z",
+    "id": "B1 admin /report/athlete/1",
+    "scenario": "GET /report/athlete/1",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:10.941Z",
+    "id": "B1 admin /report/export/pdf",
+    "scenario": "GET /report/export/pdf",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:12.009Z",
+    "id": "B1 admin /report/export/excel",
+    "scenario": "GET /report/export/excel",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:13.219Z",
+    "id": "B1 admin /mental",
+    "scenario": "GET /mental",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:14.285Z",
+    "id": "B1 admin /mental/create",
+    "scenario": "GET /mental/create",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:15.050Z",
+    "id": "B1 admin /mental/1",
+    "scenario": "GET /mental/1",
+    "role": "admin",
+    "expected": "DETAIL_OWNED",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:15.594Z",
+    "id": "B1 admin /mental/1/edit",
+    "scenario": "GET /mental/1/edit",
+    "role": "admin",
+    "expected": "DETAIL_OWNED",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:16.365Z",
+    "id": "B1 admin /taktik",
+    "scenario": "GET /taktik",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:17.508Z",
+    "id": "B1 admin /taktik/create",
+    "scenario": "GET /taktik/create",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:18.535Z",
+    "id": "B1 admin /taktik/1",
+    "scenario": "GET /taktik/1",
+    "role": "admin",
+    "expected": "DETAIL_OWNED",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:19.643Z",
+    "id": "B1 admin /taktik/1/edit",
+    "scenario": "GET /taktik/1/edit",
+    "role": "admin",
+    "expected": "DETAIL_OWNED",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:20.565Z",
+    "id": "B1 admin /reports",
+    "scenario": "GET /reports",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:22.151Z",
+    "id": "B1 admin /reports/export/pdf",
+    "scenario": "GET /reports/export/pdf",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:22.993Z",
+    "id": "B1 admin /reports/export/excel",
+    "scenario": "GET /reports/export/excel",
+    "role": "admin",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:23.607Z",
+    "id": "B1 admin /login",
+    "scenario": "GET /login",
+    "role": "admin",
+    "expected": "REDIRECT_DASHBOARD",
+    "actual": "302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:24.255Z",
+    "id": "B1 admin /register",
+    "scenario": "GET /register",
+    "role": "admin",
+    "expected": "404",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:24.837Z",
+    "id": "B1 admin /forgot-password",
+    "scenario": "GET /forgot-password",
+    "role": "admin",
+    "expected": "404",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState admin)"
+  },
+  {
+    "at": "2026-10-09T10:07:24.852Z",
+    "id": "B1 MATRIX admin",
+    "scenario": "Rekap matriks otorisasi",
+    "role": "admin",
+    "expected": "semua sesuai harapan",
+    "actual": "[{\"url\":\"/\",\"group\":\"root\",\"expected\":\"AKSES\",\"actual\":302,\"loc\":\"/dashboard\",\"ok\":true},{\"url\":\"/dashboard\",\"group\":\"dashboard\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/athletes\",\"group\":\"athletes\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/athletes/1\",\"group\":\"athletes\",\"expected\":\"AKSES\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/tests\",\"group\":\"tests\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/endurance\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/speed\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/agility\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/strength\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/power\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/accuracy\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/reaction\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/coordination\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/flexibility\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/balance\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/report\",\"group\":\"report\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/athlete/1\",\"group\":\"report\",\"expected\":\"AKSES\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/export/pdf\",\"group\":\"report\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/export/excel\",\"group\":\"report\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental\",\"group\":\"mental\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/create\",\"group\":\"mental\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/1\",\"group\":\"mental\",\"expected\":\"DETAIL_OWNED\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/1/edit\",\"group\":\"mental\",\"expected\":\"DETAIL_OWNED\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik\",\"group\":\"taktik\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/create\",\"group\":\"taktik\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/1\",\"group\":\"taktik\",\"expected\":\"DETAIL_OWNED\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/1/edit\",\"group\":\"taktik\",\"expected\":\"DETAIL_OWNED\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports\",\"group\":\"reports\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports/export/pdf\",\"group\":\"reports\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports/export/excel\",\"group\":\"reports\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/login\",\"group\":\"guest\",\"expected\":\"REDIRECT_DASHBOARD\",\"actual\":302,\"loc\":\"/dashboard\",\"ok\":true},{\"url\":\"/register\",\"group\":\"guest\",\"expected\":\"404\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/forgot-password\",\"group\":\"guest\",\"expected\":\"404\",\"actual\":404,\"loc\":\"\",\"ok\":true}]",
+    "status": "LULUS",
+    "evidence": "matrix"
+  },
+  {
+    "at": "2026-10-09T10:07:25.481Z",
+    "id": "B1 fisio /",
+    "scenario": "GET /",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:26.126Z",
+    "id": "B1 fisio /dashboard",
+    "scenario": "GET /dashboard",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:26.732Z",
+    "id": "B1 fisio /athletes",
+    "scenario": "GET /athletes",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:27.267Z",
+    "id": "B1 fisio /athletes/1",
+    "scenario": "GET /athletes/1",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:27.821Z",
+    "id": "B1 fisio /tests",
+    "scenario": "GET /tests",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:28.601Z",
+    "id": "B1 fisio /forms/endurance",
+    "scenario": "GET /forms/endurance",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:29.365Z",
+    "id": "B1 fisio /forms/speed",
+    "scenario": "GET /forms/speed",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:30.218Z",
+    "id": "B1 fisio /forms/agility",
+    "scenario": "GET /forms/agility",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:31.027Z",
+    "id": "B1 fisio /forms/strength",
+    "scenario": "GET /forms/strength",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:31.769Z",
+    "id": "B1 fisio /forms/power",
+    "scenario": "GET /forms/power",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:32.547Z",
+    "id": "B1 fisio /forms/accuracy",
+    "scenario": "GET /forms/accuracy",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:33.314Z",
+    "id": "B1 fisio /forms/reaction",
+    "scenario": "GET /forms/reaction",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:34.121Z",
+    "id": "B1 fisio /forms/coordination",
+    "scenario": "GET /forms/coordination",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:34.921Z",
+    "id": "B1 fisio /forms/flexibility",
+    "scenario": "GET /forms/flexibility",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:35.672Z",
+    "id": "B1 fisio /forms/balance",
+    "scenario": "GET /forms/balance",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:36.793Z",
+    "id": "B1 fisio /report",
+    "scenario": "GET /report",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:37.381Z",
+    "id": "B1 fisio /report/athlete/1",
+    "scenario": "GET /report/athlete/1",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:40.612Z",
+    "id": "B1 fisio /report/export/pdf",
+    "scenario": "GET /report/export/pdf",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:41.359Z",
+    "id": "B1 fisio /report/export/excel",
+    "scenario": "GET /report/export/excel",
+    "role": "fisio",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:42.290Z",
+    "id": "B1 fisio /mental",
+    "scenario": "GET /mental",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:43.012Z",
+    "id": "B1 fisio /mental/create",
+    "scenario": "GET /mental/create",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:43.747Z",
+    "id": "B1 fisio /mental/1",
+    "scenario": "GET /mental/1",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:44.420Z",
+    "id": "B1 fisio /mental/1/edit",
+    "scenario": "GET /mental/1/edit",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:45.098Z",
+    "id": "B1 fisio /taktik",
+    "scenario": "GET /taktik",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:45.797Z",
+    "id": "B1 fisio /taktik/create",
+    "scenario": "GET /taktik/create",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:46.510Z",
+    "id": "B1 fisio /taktik/1",
+    "scenario": "GET /taktik/1",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:47.142Z",
+    "id": "B1 fisio /taktik/1/edit",
+    "scenario": "GET /taktik/1/edit",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:47.750Z",
+    "id": "B1 fisio /reports",
+    "scenario": "GET /reports",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:48.318Z",
+    "id": "B1 fisio /reports/export/pdf",
+    "scenario": "GET /reports/export/pdf",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:48.846Z",
+    "id": "B1 fisio /reports/export/excel",
+    "scenario": "GET /reports/export/excel",
+    "role": "fisio",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:49.381Z",
+    "id": "B1 fisio /login",
+    "scenario": "GET /login",
+    "role": "fisio",
+    "expected": "REDIRECT_DASHBOARD",
+    "actual": "302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:49.918Z",
+    "id": "B1 fisio /register",
+    "scenario": "GET /register",
+    "role": "fisio",
+    "expected": "404",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:50.456Z",
+    "id": "B1 fisio /forgot-password",
+    "scenario": "GET /forgot-password",
+    "role": "fisio",
+    "expected": "404",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState fisio)"
+  },
+  {
+    "at": "2026-10-09T10:07:50.470Z",
+    "id": "B1 MATRIX fisio",
+    "scenario": "Rekap matriks otorisasi",
+    "role": "fisio",
+    "expected": "semua sesuai harapan",
+    "actual": "[{\"url\":\"/\",\"group\":\"root\",\"expected\":\"AKSES\",\"actual\":302,\"loc\":\"/dashboard\",\"ok\":true},{\"url\":\"/dashboard\",\"group\":\"dashboard\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/athletes\",\"group\":\"athletes\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/athletes/1\",\"group\":\"athletes\",\"expected\":\"AKSES\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/tests\",\"group\":\"tests\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/endurance\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/speed\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/agility\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/strength\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/power\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/accuracy\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/reaction\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/coordination\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/flexibility\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/balance\",\"group\":\"forms\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/report\",\"group\":\"report\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/athlete/1\",\"group\":\"report\",\"expected\":\"AKSES\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/export/pdf\",\"group\":\"report\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/export/excel\",\"group\":\"report\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental\",\"group\":\"mental\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/create\",\"group\":\"mental\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/1\",\"group\":\"mental\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/1/edit\",\"group\":\"mental\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik\",\"group\":\"taktik\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/create\",\"group\":\"taktik\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/1\",\"group\":\"taktik\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/1/edit\",\"group\":\"taktik\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports\",\"group\":\"reports\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports/export/pdf\",\"group\":\"reports\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports/export/excel\",\"group\":\"reports\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/login\",\"group\":\"guest\",\"expected\":\"REDIRECT_DASHBOARD\",\"actual\":302,\"loc\":\"/dashboard\",\"ok\":true},{\"url\":\"/register\",\"group\":\"guest\",\"expected\":\"404\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/forgot-password\",\"group\":\"guest\",\"expected\":\"404\",\"actual\":404,\"loc\":\"\",\"ok\":true}]",
+    "status": "LULUS",
+    "evidence": "matrix"
+  },
+  {
+    "at": "2026-10-09T10:07:51.085Z",
+    "id": "B1 pelatih /",
+    "scenario": "GET /",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:51.837Z",
+    "id": "B1 pelatih /dashboard",
+    "scenario": "GET /dashboard",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:52.663Z",
+    "id": "B1 pelatih /athletes",
+    "scenario": "GET /athletes",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:53.385Z",
+    "id": "B1 pelatih /athletes/1",
+    "scenario": "GET /athletes/1",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:54.094Z",
+    "id": "B1 pelatih /tests",
+    "scenario": "GET /tests",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:54.811Z",
+    "id": "B1 pelatih /forms/endurance",
+    "scenario": "GET /forms/endurance",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:55.513Z",
+    "id": "B1 pelatih /forms/speed",
+    "scenario": "GET /forms/speed",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:56.187Z",
+    "id": "B1 pelatih /forms/agility",
+    "scenario": "GET /forms/agility",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:56.864Z",
+    "id": "B1 pelatih /forms/strength",
+    "scenario": "GET /forms/strength",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:57.515Z",
+    "id": "B1 pelatih /forms/power",
+    "scenario": "GET /forms/power",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:58.211Z",
+    "id": "B1 pelatih /forms/accuracy",
+    "scenario": "GET /forms/accuracy",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:58.840Z",
+    "id": "B1 pelatih /forms/reaction",
+    "scenario": "GET /forms/reaction",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:07:59.414Z",
+    "id": "B1 pelatih /forms/coordination",
+    "scenario": "GET /forms/coordination",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:00.014Z",
+    "id": "B1 pelatih /forms/flexibility",
+    "scenario": "GET /forms/flexibility",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:00.565Z",
+    "id": "B1 pelatih /forms/balance",
+    "scenario": "GET /forms/balance",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:01.115Z",
+    "id": "B1 pelatih /report",
+    "scenario": "GET /report",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:01.652Z",
+    "id": "B1 pelatih /report/athlete/1",
+    "scenario": "GET /report/athlete/1",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:02.216Z",
+    "id": "B1 pelatih /report/export/pdf",
+    "scenario": "GET /report/export/pdf",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:02.807Z",
+    "id": "B1 pelatih /report/export/excel",
+    "scenario": "GET /report/export/excel",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:03.574Z",
+    "id": "B1 pelatih /mental",
+    "scenario": "GET /mental",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:04.335Z",
+    "id": "B1 pelatih /mental/create",
+    "scenario": "GET /mental/create",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:05.010Z",
+    "id": "B1 pelatih /mental/1",
+    "scenario": "GET /mental/1",
+    "role": "pelatih",
+    "expected": "DETAIL_OWNED",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:05.703Z",
+    "id": "B1 pelatih /mental/1/edit",
+    "scenario": "GET /mental/1/edit",
+    "role": "pelatih",
+    "expected": "DETAIL_OWNED",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:06.445Z",
+    "id": "B1 pelatih /taktik",
+    "scenario": "GET /taktik",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:07.544Z",
+    "id": "B1 pelatih /taktik/create",
+    "scenario": "GET /taktik/create",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:08.407Z",
+    "id": "B1 pelatih /taktik/1",
+    "scenario": "GET /taktik/1",
+    "role": "pelatih",
+    "expected": "DETAIL_OWNED",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:09.111Z",
+    "id": "B1 pelatih /taktik/1/edit",
+    "scenario": "GET /taktik/1/edit",
+    "role": "pelatih",
+    "expected": "DETAIL_OWNED",
+    "actual": "403",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:09.748Z",
+    "id": "B1 pelatih /reports",
+    "scenario": "GET /reports",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:11.884Z",
+    "id": "B1 pelatih /reports/export/pdf",
+    "scenario": "GET /reports/export/pdf",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:12.451Z",
+    "id": "B1 pelatih /reports/export/excel",
+    "scenario": "GET /reports/export/excel",
+    "role": "pelatih",
+    "expected": "AKSES",
+    "actual": "200",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:12.978Z",
+    "id": "B1 pelatih /login",
+    "scenario": "GET /login",
+    "role": "pelatih",
+    "expected": "REDIRECT_DASHBOARD",
+    "actual": "302 → /dashboard",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:13.582Z",
+    "id": "B1 pelatih /register",
+    "scenario": "GET /register",
+    "role": "pelatih",
+    "expected": "404",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:14.198Z",
+    "id": "B1 pelatih /forgot-password",
+    "scenario": "GET /forgot-password",
+    "role": "pelatih",
+    "expected": "404",
+    "actual": "404",
+    "status": "LULUS",
+    "evidence": "HTTP GET (storageState pelatih)"
+  },
+  {
+    "at": "2026-10-09T10:08:14.227Z",
+    "id": "B1 MATRIX pelatih",
+    "scenario": "Rekap matriks otorisasi",
+    "role": "pelatih",
+    "expected": "semua sesuai harapan",
+    "actual": "[{\"url\":\"/\",\"group\":\"root\",\"expected\":\"AKSES\",\"actual\":302,\"loc\":\"/dashboard\",\"ok\":true},{\"url\":\"/dashboard\",\"group\":\"dashboard\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/athletes\",\"group\":\"athletes\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/athletes/1\",\"group\":\"athletes\",\"expected\":\"AKSES\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/tests\",\"group\":\"tests\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/endurance\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/speed\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/agility\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/strength\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/power\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/accuracy\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/reaction\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/coordination\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/flexibility\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/forms/balance\",\"group\":\"forms\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/report\",\"group\":\"report\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/athlete/1\",\"group\":\"report\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/export/pdf\",\"group\":\"report\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/report/export/excel\",\"group\":\"report\",\"expected\":\"403\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental\",\"group\":\"mental\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/create\",\"group\":\"mental\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/1\",\"group\":\"mental\",\"expected\":\"DETAIL_OWNED\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/mental/1/edit\",\"group\":\"mental\",\"expected\":\"DETAIL_OWNED\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik\",\"group\":\"taktik\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/create\",\"group\":\"taktik\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/1\",\"group\":\"taktik\",\"expected\":\"DETAIL_OWNED\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/taktik/1/edit\",\"group\":\"taktik\",\"expected\":\"DETAIL_OWNED\",\"actual\":403,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports\",\"group\":\"reports\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports/export/pdf\",\"group\":\"reports\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/reports/export/excel\",\"group\":\"reports\",\"expected\":\"AKSES\",\"actual\":200,\"loc\":\"\",\"ok\":true},{\"url\":\"/login\",\"group\":\"guest\",\"expected\":\"REDIRECT_DASHBOARD\",\"actual\":302,\"loc\":\"/dashboard\",\"ok\":true},{\"url\":\"/register\",\"group\":\"guest\",\"expected\":\"404\",\"actual\":404,\"loc\":\"\",\"ok\":true},{\"url\":\"/forgot-password\",\"group\":\"guest\",\"expected\":\"404\",\"actual\":404,\"loc\":\"\",\"ok\":true}]",
+    "status": "LULUS",
+    "evidence": "matrix"
+  },
+  {
+    "at": "2026-10-09T10:08:20.575Z",
+    "id": "B2 POST /athletes",
+    "scenario": "POST /athletes oleh pelatih (CSRF sah)",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "HTTP 403",
+    "status": "LULUS",
+    "evidence": "API request dengan X-CSRF-TOKEN valid"
+  },
+  {
+    "at": "2026-10-09T10:08:20.593Z",
+    "id": "B2 PUT /athletes/1",
+    "scenario": "PUT /athletes/1 oleh pelatih (CSRF sah)",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "HTTP 403",
+    "status": "LULUS",
+    "evidence": "API request dengan X-CSRF-TOKEN valid"
+  },
+  {
+    "at": "2026-10-09T10:08:20.616Z",
+    "id": "B2 DELETE /athletes/1",
+    "scenario": "DELETE /athletes/1 oleh pelatih (CSRF sah)",
+    "role": "pelatih",
+    "expected": "403",
+    "actual": "HTTP 403",
+    "status": "LULUS",
+    "evidence": "API request dengan X-CSRF-TOKEN valid"
+  },
+  {
+    "at": "2026-10-09T10:08:20.643Z",
+    "id": "B2 side-effect",
+    "scenario": "Data tidak berubah setelah ditolak",
+    "role": "pelatih",
+    "expected": "tidak ada atlet QA_TEST_Akses_Ditolak",
+    "actual": "created=false, GET /athletes/1 (admin) = 404, body={\n    \"message\": \"No query results for model [App\\\\Models\\\\Athlete] 1\",\n    \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\NotFoun",
+    "status": "LULUS",
+    "evidence": "GET /athletes + GET /athletes/1 sebagai admin"
+  },
+  {
+    "at": "2026-10-09T10:08:20.789Z",
+    "id": "C beforeAll",
+    "scenario": "Hook beforeAll skenario C dijalankan",
+    "role": "admin",
+    "expected": "sekali per run",
+    "actual": "mulai",
+    "status": "INFO",
+    "evidence": "notes.json"
+  },
+  {
+    "at": "2026-10-09T10:08:25.798Z",
+    "id": "C beforeAll selesai",
+    "scenario": "Bukti beforeAll kedua (deteksi worker restart)",
+    "role": "admin",
+    "expected": "-",
+    "actual": "dihapus=1",
+    "status": "INFO",
+    "evidence": "notes.json"
+  },
+  {
+    "at": "2026-10-09T10:08:32.321Z",
+    "id": "C1",
+    "scenario": "Tambah atlet tanpa foto",
+    "role": "admin",
+    "expected": "302, baris bertambah 1, toast sukses",
+    "actual": "POST 302, baris 2→3, tampil=true, toast=true, consoleErr=3, reqGagal=0",
+    "status": "LULUS",
+    "evidence": "screenshots/C1-modal-tambah.png"
+  },
+  {
+    "at": "2026-10-09T10:08:44.488Z",
+    "id": "C2",
+    "scenario": "Tambah atlet dengan foto (fisio)",
+    "role": "fisio",
+    "expected": "tersimpan & path foto terisi di DB",
+    "actual": "POST 302, baris 3→4, photoPath=uploads/athletes/2584a9b3-0dc3-4c51-aa07-77516e2ed9af.png, label=\"<span style=\"color: rgb(0, 230, 118);\">Foto saat ini: 2584a9b3-0dc3-4c51-aa07-77516e2ed9af\"",
+    "status": "LULUS",
+    "evidence": "screenshots/C2-modal-edit-foto.png"
+  },
+  {
+    "at": "2026-10-09T10:08:50.177Z",
+    "id": "C3",
+    "scenario": "Validasi submit kosong",
+    "role": "admin",
+    "expected": "pesan validasi tampil & data tidak tersimpan, tanpa 500",
+    "actual": "POST 302, baris 4→4, tersimpan=false, adaMarker=false, pesanErrorTerlihat=true, consoleErr=3, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "POST /athletes + GET /athletes + screenshots/C3-validasi.png"
+  },
+  {
+    "at": "2026-10-09T10:08:56.615Z",
+    "id": "C4",
+    "scenario": "Validasi nama > 100 karakter",
+    "role": "admin",
+    "expected": "pesan validasi tampil & data tidak tersimpan, tanpa 500",
+    "actual": "POST 302, baris 4→4, tersimpan=false, adaMarker=true, pesanErrorTerlihat=true, consoleErr=3, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "POST /athletes + GET /athletes + screenshots/C4-validasi.png"
+  },
+  {
+    "at": "2026-10-09T10:09:02.661Z",
+    "id": "C5",
+    "scenario": "Validasi tanggal lahir masa depan",
+    "role": "admin",
+    "expected": "pesan validasi tampil & data tidak tersimpan, tanpa 500",
+    "actual": "POST 302, baris 4→4, tersimpan=false, adaMarker=true, pesanErrorTerlihat=true, consoleErr=3, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "POST /athletes + GET /athletes + screenshots/C5-validasi.png"
+  },
+  {
+    "at": "2026-10-09T10:09:09.219Z",
+    "id": "C6",
+    "scenario": "Validasi file bukan gambar",
+    "role": "admin",
+    "expected": "pesan validasi tampil & data tidak tersimpan, tanpa 500",
+    "actual": "POST 302, baris 4→4, tersimpan=false, adaMarker=true, pesanErrorTerlihat=true, consoleErr=3, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "POST /athletes + GET /athletes + screenshots/C6-validasi.png"
+  },
+  {
+    "at": "2026-10-09T10:09:16.450Z",
+    "id": "C7",
+    "scenario": "Validasi file > 2 MB",
+    "role": "admin",
+    "expected": "pesan validasi tampil & data tidak tersimpan, tanpa 500",
+    "actual": "POST 302, baris 4→4, tersimpan=false, adaMarker=true, pesanErrorTerlihat=true, consoleErr=3, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "POST /athletes + GET /athletes + screenshots/C7-validasi.png"
+  },
+  {
+    "at": "2026-10-09T10:09:26.249Z",
+    "id": "C8",
+    "scenario": "Edit atlet (ubah phone & berat)",
+    "role": "admin",
+    "expected": "perubahan tersimpan & terbaca ulang",
+    "actual": "heal=ada, POST 302, namaForm=\"QA_TEST_Satu\", phoneDB=\"089999999999\", weightDB=\"71.5\", tampilDiTabel=true",
+    "status": "LULUS",
+    "evidence": "screenshots/C8-modal-edit.png"
+  },
+  {
+    "at": "2026-10-09T10:09:31.274Z",
+    "id": "C9",
+    "scenario": "Halaman detail atlet",
+    "role": "admin",
+    "expected": "200, nama & gender \"Laki-laki\" tampil",
+    "actual": "heal=ada, url=/athletes/45, genderLakiLaki=true, consoleErr=3, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/C9-detail-atlet.png"
+  },
+  {
+    "at": "2026-10-09T10:09:40.116Z",
+    "id": "C10",
+    "scenario": "Upload foto bernama a\"b'c<d>.png lalu buka modal Edit",
+    "role": "admin",
+    "expected": "tanpa 500, tanpa alert, tanpa HTML tersuntik",
+    "actual": "POST 302, tersimpan=true, dialogs=[], sink={\"labelHtml\":\"<span style=\\\"color: rgb(0, 230, 118);\\\">Foto saat ini: 57ea2dd5-c548-4c27-a9df-238ae9a0d90a.png</span><br>Format: JPG, PNG, GIF. Maksimal 2MB.\",\"adaElemenD\":false,\"adaElemenImgPalsu\":false,\"photoPath\":\"uploads/athletes/57ea2dd5-c548-4c27-a9df-238ae9a0d90a.png\"}, injected=false, consoleErr=cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwin, ERRBODY=\"\"",
+    "status": "LULUS",
+    "evidence": "screenshots/C10-modal-edit-xss.png"
+  },
+  {
+    "at": "2026-10-09T10:09:48.705Z",
+    "id": "C11",
+    "scenario": "Upload nama aman xss_test.png (pembanding C10)",
+    "role": "admin",
+    "expected": "302 tersimpan, modal Edit menampilkan path foto, tanpa injeksi",
+    "actual": "POST 302, baris 5→6, tersimpan=true, photoPath=uploads/athletes/5120c914-7284-44ba-a7ed-214f6b83842f.png, injected=false, dialogs=[], sink={\"html\":\"<span style=\\\"color: rgb(0, 230, 118);\\\">Foto saat ini: 5120c914-7284-44ba-a7ed-214f6b83842f.png</span><br>Format: JPG, PNG, GIF. Maksimal 2MB.\",\"adaElemenD\":false,\"adaImgPalsu\":false,\"path\":\"uploads/athletes/5120c914-7284-44ba-a7ed-214f6b83842f.png\"}, consoleErr=4",
+    "status": "LULUS",
+    "evidence": "screenshots/C11-modal-edit-aman.png"
+  },
+  {
+    "at": "2026-10-09T10:09:56.477Z",
+    "id": "D1 endurance",
+    "scenario": "Submit form tes endurance",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-endurance.png"
+  },
+  {
+    "at": "2026-10-09T10:10:05.183Z",
+    "id": "D2 speed",
+    "scenario": "Submit form tes speed (rating Kurang Sekali)",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-speed.png"
+  },
+  {
+    "at": "2026-10-09T10:10:13.981Z",
+    "id": "D3 agility",
+    "scenario": "Submit form tes agility",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-agility.png"
+  },
+  {
+    "at": "2026-10-09T10:10:22.044Z",
+    "id": "D4 strength",
+    "scenario": "Submit form tes strength (rating Sempurna)",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-strength.png"
+  },
+  {
+    "at": "2026-10-09T10:10:29.929Z",
+    "id": "D5 power",
+    "scenario": "Submit form tes power",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-power.png"
+  },
+  {
+    "at": "2026-10-09T10:10:38.724Z",
+    "id": "D6 accuracy",
+    "scenario": "Submit form tes accuracy (rating Weak)",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-accuracy.png"
+  },
+  {
+    "at": "2026-10-09T10:10:45.576Z",
+    "id": "D7 reaction",
+    "scenario": "Submit form tes reaction",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-reaction.png"
+  },
+  {
+    "at": "2026-10-09T10:10:53.026Z",
+    "id": "D8 coordination",
+    "scenario": "Submit form tes coordination",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-coordination.png"
+  },
+  {
+    "at": "2026-10-09T10:11:00.647Z",
+    "id": "D9 flexibility",
+    "scenario": "Submit form tes flexibility (rating Fair)",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-flexibility.png"
+  },
+  {
+    "at": "2026-10-09T10:11:09.576Z",
+    "id": "D10 balance",
+    "scenario": "Submit form tes balance",
+    "role": "fisio",
+    "expected": "302 + flash \"berhasil disimpan\", data tersimpan",
+    "actual": "POST 302, athleteId=45, selectTerisi=45, sukses=true, oldInputTersisa=false, pesanErrorTerlihat=false, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/D-balance.png"
+  },
+  {
+    "at": "2026-10-09T10:11:15.187Z",
+    "id": "D11",
+    "scenario": "Detail atlet: hasil tes, gender, radar",
+    "role": "fisio",
+    "expected": "10/10 sumbu radar bernilai & 4 rating uji (Sempurna/Fair/Weak/Kurang Sekali) tampil",
+    "actual": "dinilai=10/10, barisTabel=10, genderLakiLaki=true, ratingTampil=[Sempurna, Fair, Weak, Kurang Sekali], adaSvgRadar=true, consoleErr=0, reqGagal=- || AKAR (bukti DB tinker): rating tersimpan di kolom test_results (Sempurna/Fair/Weak/Kurang Sekali) tetapi AthleteController.php:98 default=>null tidak mengenali \"Sempurna\",\"Fair\",\"Weak\" → skor sumbu Kekuatan/Akurasi/Fleksibilitas null; tampilan tabel hanya menampilkan rating utk speed (TestResult.php:143)",
+    "status": "LULUS",
+    "evidence": "screenshots/D11-detail-hasil-tes.png + tinker SELECT test_results"
+  },
+  {
+    "at": "2026-10-09T10:11:29.652Z",
+    "id": "E1",
+    "scenario": "Buat assessment mental (pelatih)",
+    "role": "pelatih",
+    "expected": "302, muncul di daftar /mental",
+    "actual": "POST 302, id=12, consoleErr=3, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/E1-mental-create.png"
+  },
+  {
+    "at": "2026-10-09T10:11:44.410Z",
+    "id": "E2",
+    "scenario": "Lihat + ubah assessment mental",
+    "role": "pelatih",
+    "expected": "GET 200 & isi tampil; PUT 302 & perubahan tersimpan",
+    "actual": "show=200, isiAwalTampil=true, PUT 302, tersimpanSetelahUbah=true, consoleErr=4",
+    "status": "LULUS",
+    "evidence": "screenshots/E2-mental-show.png"
+  },
+  {
+    "at": "2026-10-09T10:11:59.543Z",
+    "id": "E3",
+    "scenario": "Buat assessment taktik (admin, pemilik = admin)",
+    "role": "admin",
+    "expected": "302, muncul di daftar /taktik",
+    "actual": "POST 302, id=10, consoleErr=4",
+    "status": "LULUS",
+    "evidence": "screenshots/E3-taktik-create.png"
+  },
+  {
+    "at": "2026-10-09T10:12:04.544Z",
+    "id": "E4",
+    "scenario": "IDOR: pelatih akses assessment milik admin",
+    "role": "pelatih",
+    "expected": "GET/PUT/DELETE → 403, data pemilik tidak berubah",
+    "actual": "GET 403, PUT 403, DELETE 403, dataPemilikTidakBerubah=true",
+    "status": "LULUS",
+    "evidence": "API request dengan token CSRF sah"
+  },
+  {
+    "at": "2026-10-09T10:12:05.395Z",
+    "id": "E5 /reports",
+    "scenario": "Export/akses /reports",
+    "role": "pelatih",
+    "expected": "200 dengan file berisi kolom + baris data",
+    "actual": "HTTP 200, type=text/html; charset=utf-8, disp=-, bytes=19817, isi=\"<!DOCTYPE html>\\r | <html lang=\"id\">\\r | \\r | <head>\\r |     <meta charset=\"UTF-8\">\\r |     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\\r |     <meta name=\"csrf-token\" content=\"bmkWoPcnYelIrtAh\"",
+    "status": "LULUS",
+    "evidence": "GET /reports"
+  },
+  {
+    "at": "2026-10-09T10:12:06.788Z",
+    "id": "E5 /reports/export/pdf",
+    "scenario": "Export/akses /reports/export/pdf",
+    "role": "pelatih",
+    "expected": "200 dengan file berisi kolom + baris data",
+    "actual": "HTTP 200, type=application/pdf, disp=attachment; filename=\"laporan_assessment_pelatih_Coach Pelatih_2026-10-09.pdf\", bytes=879853, isi=\"%PDF-1.7 | 1 0 obj | << /Type /Catalog | /Outlines 2 0 R | /Pages 3 0 R >> | endobj | 2 0 obj | << /Type /Outlines /Count 0 >> | endobj | 3 0 obj | << /Type /Pages | /Kids [6 0 R | ] | /Count 1 | /Resources << | /ProcSet\"",
+    "status": "LULUS",
+    "evidence": "GET /reports/export/pdf"
+  },
+  {
+    "at": "2026-10-09T10:12:07.583Z",
+    "id": "E5 /reports/export/excel",
+    "scenario": "Export/akses /reports/export/excel",
+    "role": "pelatih",
+    "expected": "200 dengan file berisi kolom + baris data",
+    "actual": "HTTP 200, type=text/csv; charset=UTF-8, disp=attachment; filename=\"laporan_assessment_pelatih_Coach Pelatih_2026-10-09.csv\", bytes=719, isi=\"\"Mental Assessments\" | Atlet,\"Tanggal Assessment\",Fokus,Motivasi,Konsentrasi,Tekanan,Keyakinan,Kepemimpinan,\"Rata-rata Skor\",\"Penilaian Keseluruhan\",Rekomendasi | QA_TEST_Aman,\"09 Oct 2026 10:11\",,,,,,,5,\"QA_TEST_ penila\"",
+    "status": "LULUS",
+    "evidence": "GET /reports/export/excel"
+  },
+  {
+    "at": "2026-10-09T10:12:08.451Z",
+    "id": "E6 /report",
+    "scenario": "Export/akses /report",
+    "role": "fisio",
+    "expected": "200, file terunduh (PDF valid, Excel berisi kolom)",
+    "actual": "HTTP 200, type=text/html; charset=utf-8, disp=-, bytes=28570, isi=\"<!DOCTYPE html>\\r | <html lang=\"id\">\\r | \\r | <head>\\r |     <meta charset=\"UTF-8\">\\r |     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\\r |     <meta name=\"csrf-token\" content=\"VPd5vrwtRZr6EvbB\"",
+    "status": "LULUS",
+    "evidence": "GET /report"
+  },
+  {
+    "at": "2026-10-09T10:12:12.178Z",
+    "id": "E6 /report/export/pdf",
+    "scenario": "Export/akses /report/export/pdf",
+    "role": "fisio",
+    "expected": "200, file terunduh (PDF valid, Excel berisi kolom)",
+    "actual": "HTTP 200, type=application/pdf, disp=attachment; filename=laporan-screening-semua-atlet.pdf, bytes=1042578, isi=\"%PDF-1.7 | 1 0 obj | << /Type /Catalog | /Outlines 2 0 R | /Pages 3 0 R >> | endobj | 2 0 obj | << /Type /Outlines /Count 0 >> | endobj | 3 0 obj | << /Type /Pages | /Kids [6 0 R | 20 0 R | 22 0 R | 24 0 R | 26 0 R | 28 \"",
+    "status": "LULUS",
+    "evidence": "GET /report/export/pdf"
+  },
+  {
+    "at": "2026-10-09T10:12:12.776Z",
+    "id": "E6 /report/export/excel",
+    "scenario": "Export/akses /report/export/excel",
+    "role": "fisio",
+    "expected": "200, file terunduh (PDF valid, Excel berisi kolom)",
+    "actual": "HTTP 200, type=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, disp=attachment; filename=laporan-screening-2026-10-09.xlsx, bytes=4539, isi=\"PK\u0003\u0004\u0014\u0000\u0002\u0000\b\u0000��I]v��\t\u0001\u0000\u0000�\u0002\u0000\u0000\u0013\u0000\u0000\u0000[Content_Types].xml���N�0\u0010�_���r@\b%遟#p(\u000f�8�Ċ��uK��8i� | ��d�;3�h�r;Z�\u000e\u0018I{W�Xs�N�F������3J�\u001a0�a�'$����\u0014�X�:�x�R���T�\u0016H��.OZ\u001f-�|��\f�\u0006�Pެ׷Ry�Х\"�\u0019�.\u001f���I�i���\u001e\u0011\\rq�p\u0014ά�C\bF+Hy.\u000f��E)N\u0004����z\u001dh�\u0005\\�%̓\"",
+    "status": "LULUS",
+    "evidence": "GET /report/export/excel"
+  },
+  {
+    "at": "2026-10-09T10:12:16.981Z",
+    "id": "E6 UI export Excel",
+    "scenario": "Klik tombol Export Excel di /report (fisio)",
+    "role": "fisio",
+    "expected": "file terunduh dengan nama & isi wajar",
+    "actual": "suggestedFilename=laporan-screening-2026-10-09.xlsx, bytes=4539",
+    "status": "LULUS",
+    "evidence": "screenshot E6-report-fisio.png"
+  },
+  {
+    "at": "2026-10-09T10:12:19.109Z",
+    "id": "E7",
+    "scenario": "Halaman laporan dengan data sendiri",
+    "role": "pelatih + fisio",
+    "expected": "/reports dan /report → 200",
+    "actual": "/reports=200 :: , /report=200",
+    "status": "LULUS",
+    "evidence": "GET /reports & /report"
+  },
+  {
+    "at": "2026-10-09T10:12:28.549Z",
+    "id": "E8",
+    "scenario": "Hapus assessment mental & taktik",
+    "role": "pelatih + admin",
+    "expected": "terhapus (GET setelah → 404)",
+    "actual": "/mental/12: DELETE 302, GET setelah=404 ; /taktik/10: DELETE 302, GET setelah=404",
+    "status": "LULUS",
+    "evidence": "UI delete + GET ulang"
+  },
+  {
+    "at": "2026-10-09T10:12:31.206Z",
+    "id": "F1",
+    "scenario": "Dashboard admin",
+    "role": "admin",
+    "expected": "200, heading \"Screening Fisioterapi Sepak Bola\", kartu terisi (modul=12, atlet>0, kelengkapan<=100), 4 kartu tes fisik tampil",
+    "actual": "HTTP 200, heading=\"Screening Fisioterapi Sepak Bola\", jenisTes=12, atletAktif=6, kelengkapan=50%, mentalHariIni=0, kartuFisik=1, consoleErr=0, reqGagal=-",
+    "status": "LULUS",
+    "evidence": "screenshots/F1-dashboard-admin.png"
+  },
+  {
+    "at": "2026-10-09T10:12:34.247Z",
+    "id": "F2",
+    "scenario": "Dashboard pelatih (hanya mental+taktik)",
+    "role": "pelatih",
+    "expected": "200, heading \"Assessment Pelatih Sepak Bola\", jenis assessment=2, kartu tes fisik tidak tampil",
+    "actual": "HTTP 200, heading=\"Assessment Pelatih Sepak Bola\", jenisAssessment=2, kartuFisik=0, kartuMental=1, consoleErr=0",
+    "status": "LULUS",
+    "evidence": "screenshots/F2-dashboard-pelatih.png"
+  },
+  {
+    "at": "2026-10-09T10:12:42.881Z",
+    "id": "F3",
+    "scenario": "Konsistensi angka dashboard antar role",
+    "role": "admin + fisio + pelatih",
+    "expected": "nilai Atlet aktif sama untuk semua role dan > 0",
+    "actual": "admin=200/6, fisio=200/6, pelatih=200/6",
+    "status": "LULUS",
+    "evidence": "GET /dashboard × 3"
+  },
+  {
+    "at": "2026-10-09T10:12:50.162Z",
+    "id": "F4",
+    "scenario": "Navigasi sidebar dari dashboard",
+    "role": "admin",
+    "expected": "link sidebar menuju halaman yang benar (200)",
+    "actual": "Data Atlet→/athletes ✓ ; Dashboard→/dashboard ✓, consoleErr=0",
+    "status": "LULUS",
+    "evidence": "screenshot F4-nav.png"
+  },
+  {
+    "at": "2026-10-09T10:13:02.486Z",
+    "id": "H1",
+    "scenario": "Konsol browser bersih (5 halaman utama)",
+    "role": "admin",
+    "expected": "0 error console; warning CDN dicatat terpisah",
+    "actual": "/dashboard[200] err=0 warn=1 reqGagal=- ; /athletes[200] err=0 warn=1 reqGagal=- ; /mental[200] err=0 warn=1 reqGagal=- ; /taktik[200] err=0 warn=1 reqGagal=- ; /report[200] err=0 warn=1 reqGagal=- || totalError=0, totalWarning=5, contohError=-",
+    "status": "LULUS",
+    "evidence": "konsol Playwright per halaman"
+  },
+  {
+    "at": "2026-10-09T10:15:12.476Z",
+    "id": "H3",
+    "scenario": "Layout desktop 1366x768",
+    "role": "admin",
+    "expected": "tanpa overflow horizontal, halaman 200",
+    "actual": "/dashboard[200] scrollW=1366/innerW=1366 ; /athletes[200] scrollW=1366/innerW=1366 ; /report[200] scrollW=1366/innerW=1366",
+    "status": "LULUS",
+    "evidence": "screenshots/H3-desktop-*.png"
+  },
+  {
+    "at": "2026-10-09T10:15:14.919Z",
+    "id": "H4",
+    "scenario": "Dependensi eksternal CDN di halaman aplikasi",
+    "role": "admin",
+    "expected": "mencatat host eksternal yang dipanggil + warning terkait production",
+    "actual": "hostEksternal=cdn.tailwindcss.com(2), fonts.googleapis.com(1), fonts.gstatic.com(4), requestsKeCdnTailwind=2, warningCdn=\"cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwin\"",
+    "status": "LULUS",
+    "evidence": "lib.js layouts/app.blade.php:11 (cdn.tailwindcss.com)"
+  },
+  {
+    "at": "2026-10-09T10:15:16.903Z",
+    "id": "G1",
+    "scenario": "POST /athletes tanpa _token (sah login, tapi tanpa CSRF)",
+    "role": "admin",
+    "expected": "419 (TokenMismatch) & data tidak tersimpan",
+    "actual": "POST tanpa token=419; POST sebagai tamu=419 (redirect ke login bila 302)",
+    "status": "LULUS",
+    "evidence": "APIRequestContext tanpa kolom _token"
+  },
+  {
+    "at": "2026-10-09T10:15:17.040Z",
+    "id": "G2",
+    "scenario": "Flag cookie sesi",
+    "role": "admin",
+    "expected": "cookie sesi HttpOnly=true & SameSite=Lax/Strict",
+    "actual": "session=laravel-session httpOnly=true sameSite=Lax secure=false expires=1791547568.564766 || semua=XSRF-TOKEN[httpOnly=false,sameSite=Lax,secure=false,path=/] | laravel-session[httpOnly=true,sameSite=Lax,secure=false,path=/]",
+    "status": "LULUS",
+    "evidence": "browserContext.cookies()"
+  },
+  {
+    "at": "2026-10-09T10:15:17.846Z",
+    "id": "G3",
+    "scenario": "Isi halaman error 500 (/reports) & kebocoran APP_DEBUG",
+    "role": "pelatih",
+    "expected": "/reports tidak lagi 500 (assessment yatim diperbaiki T1); bila kelak ada 500 dan APP_DEBUG masih true, stack trace tampil = kebocoran (pemilik menyetel APP_DEBUG=false)",
+    "actual": "HTTP 200, adaStackTrace=false, adaPathInternal=false, bocorSecret=false, pemicu500Lain=tidak ada tanpa mengubah kode/data, isi=\"\"",
+    "status": "LULUS",
+    "evidence": "GET /reports (pelatih) — sebelumnya 500 + stack trace, kini 200"
+  },
+  {
+    "at": "2026-10-09T10:15:20.997Z",
+    "id": "G4",
+    "scenario": "404/route tak dikenal tidak membocorkan debug",
+    "role": "admin",
+    "expected": "404 tanpa stack trace & tanpa path internal",
+    "actual": "/halaman-tidak-ada-qa-test=404 stack=false path=false ; /athletes/999999=404 stack=false path=false ; /taktik/999999=404 stack=false path=false ; /api/tidak-ada=404 stack=false path=false",
+    "status": "LULUS",
+    "evidence": "GET 4 URL tak valid"
+  },
+  {
+    "at": "2026-10-09T10:15:24.498Z",
+    "id": "G5",
+    "scenario": "Tamu membuka route terproteksi langsung via URL",
+    "role": "guest",
+    "expected": "dialihkan ke /login (302) atau 401/403 — bukan 200",
+    "actual": "/dashboard=302→http://127.0.0.1:8000/login ; /athletes=302→http://127.0.0.1:8000/login ; /mental=302→http://127.0.0.1:8000/login ; /taktik=302→http://127.0.0.1:8000/login ; /report=302→http://127.0.0.1:8000/login ; /reports=302→http://127.0.0.1:8000/login",
+    "status": "LULUS",
+    "evidence": "APIRequestContext tanpa cookie"
+  },
+  {
+    "at": "2026-10-09T10:16:35.950Z",
+    "id": "I1",
+    "scenario": "Throttle POST /login (5/menit): 6 login salah",
+    "role": "guest",
+    "expected": "percobaan 1–5 ditolak biasa (302), percobaan ke-6 → 429 Too Many Requests",
+    "actual": "#1=302, #2=302, #3=302, #4=302, #5=302, #6=429",
+    "status": "LULUS",
+    "evidence": "POST /login × 6 berturut-turut dari 127.0.0.1"
+  },
+  {
+    "at": "2026-10-09T10:17:48.256Z",
+    "id": "I2",
+    "scenario": "Login setelah jeda throttle, logout, & tombol Back",
+    "role": "fisio",
+    "expected": "login 302→/dashboard (bukan 429); logout 302→/login + sesi habis; Back tidak menampilkan dashboard terautentikasi",
+    "actual": "login=302→/dashboard, logout=302→/login, cookieSesiSisa=1, Back→/dashboard (adaHeadingDashboard=false, stale-bfcache, setelah reload→/login), GET /dashboard sesudah logout=302→/login",
+    "status": "LULUS",
+    "evidence": "screenshots/I2-login-pasca-throttle.png"
+  },
+  {
+    "at": "2026-10-09T10:18:25.084Z",
+    "id": "H2",
+    "scenario": "Layout mobile 375x812",
+    "role": "admin",
+    "expected": "tidak ada scroll horizontal pada document (tiap halaman 200)",
+    "actual": "/dashboard[200] scrollW=375/innerW=375 table.dashboard-table:1213, thead.:1213, tr.:1213 ; /athletes[200] scrollW=375/innerW=375 table.w-full:873, thead.:873, tr.:873 ; /report[200] scrollW=375/innerW=375 table.w-full:1499, thead.:1499, tr.:1499",
+    "status": "LULUS",
+    "evidence": "screenshots/H2-mobile-*.png"
   }
 ]
