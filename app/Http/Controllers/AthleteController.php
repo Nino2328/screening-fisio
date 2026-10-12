@@ -6,6 +6,7 @@ use App\Models\MentalAssessment;
 use App\Models\TaktikAssessment;
 use App\Models\TestResult;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AthleteController extends Controller
 {
@@ -20,7 +21,7 @@ class AthleteController extends Controller
             $data = $request->validate([
                 'name' => 'required|string|max:100',
                 'birth_place' => 'nullable|string|max:100',
-                'birth_date' => 'nullable|date',
+                'birth_date' => 'nullable|date|before_or_equal:today',
                 'age' => 'nullable|integer',
                 'gender' => 'nullable|string',
                 'position' => 'nullable|string',
@@ -28,12 +29,24 @@ class AthleteController extends Controller
                 'weight' => 'nullable|numeric',
                 'phone' => 'nullable|string',
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'name.required' => 'Nama lengkap wajib diisi.',
+                'name.max' => 'Nama lengkap maksimal 100 karakter.',
+                'birth_place.max' => 'Tempat lahir maksimal 100 karakter.',
+                'birth_date.date' => 'Format tanggal lahir tidak valid.',
+                'birth_date.before_or_equal' => 'Tanggal lahir tidak boleh melewati hari ini.',
+                'age.integer' => 'Usia harus berupa angka bulat.',
+                'height.numeric' => 'Tinggi badan harus berupa angka.',
+                'weight.numeric' => 'Berat badan harus berupa angka.',
+                'photo.image' => 'Foto harus berupa file gambar.',
+                'photo.mimes' => 'Foto harus berformat JPG, JPEG, PNG, atau GIF.',
+                'photo.max' => 'Ukuran foto maksimal 2 MB.',
             ]);
 
             // Handle photo upload
             if ($request->hasFile('photo')) {
                 $photo = $request->file('photo');
-                $photoName = time() . '_' . $photo->getClientOriginalName();
+                $photoName = Str::uuid() . '.' . $photo->extension();
                 $photo->move(public_path('uploads/athletes'), $photoName);
                 $data['photo'] = 'uploads/athletes/' . $photoName;
             }
@@ -78,15 +91,19 @@ class AthleteController extends Controller
                 str_contains($rating, 'excellent'),
                 str_contains($rating, 'luar biasa'),
                 str_contains($rating, 'baik sekali'),
+                str_contains($rating, 'sempurna'),
                 str_contains($rating, 'optimal') => 5.0,
                 str_contains($rating, 'good'),
                 str_contains($rating, 'above average'),
                 str_contains($rating, 'diatas rata'),
                 $rating === 'baik' => 4.0,
+                str_contains($rating, 'kurang sekali') => 1.0, // terendah, dicek sebelum 'kurang'
                 str_contains($rating, 'below'),
                 str_contains($rating, 'di bawah'),
                 str_contains($rating, 'dibawah'),
-                str_contains($rating, 'kurang') => 2.0,
+                str_contains($rating, 'kurang'),
+                str_contains($rating, 'weak'),
+                str_contains($rating, 'fair') => 2.0, // Fair di bawah Average pada form Fleksibilitas
                 str_contains($rating, 'average'),
                 str_contains($rating, 'rata-rata'),
                 str_contains($rating, 'rata rata'),
@@ -187,7 +204,7 @@ class AthleteController extends Controller
             $data = $request->validate([
                 'name' => 'required|string|max:100',
                 'birth_place' => 'nullable|string|max:100',
-                'birth_date' => 'nullable|date',
+                'birth_date' => 'nullable|date|before_or_equal:today',
                 'age' => 'nullable|integer',
                 'gender' => 'nullable|string',
                 'position' => 'nullable|string',
@@ -195,17 +212,29 @@ class AthleteController extends Controller
                 'weight' => 'nullable|numeric',
                 'phone' => 'nullable|string',
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'name.required' => 'Nama lengkap wajib diisi.',
+                'name.max' => 'Nama lengkap maksimal 100 karakter.',
+                'birth_place.max' => 'Tempat lahir maksimal 100 karakter.',
+                'birth_date.date' => 'Format tanggal lahir tidak valid.',
+                'birth_date.before_or_equal' => 'Tanggal lahir tidak boleh melewati hari ini.',
+                'age.integer' => 'Usia harus berupa angka bulat.',
+                'height.numeric' => 'Tinggi badan harus berupa angka.',
+                'weight.numeric' => 'Berat badan harus berupa angka.',
+                'photo.image' => 'Foto harus berupa file gambar.',
+                'photo.mimes' => 'Foto harus berformat JPG, JPEG, PNG, atau GIF.',
+                'photo.max' => 'Ukuran foto maksimal 2 MB.',
             ]);
 
             // Handle photo upload
             if ($request->hasFile('photo')) {
                 // Delete old photo if exists
-                if ($athlete->photo && file_exists(public_path($athlete->photo))) {
+                if ($athlete->photo && str_starts_with($athlete->photo, 'uploads/athletes/') && file_exists(public_path($athlete->photo))) {
                     unlink(public_path($athlete->photo));
                 }
 
                 $photo = $request->file('photo');
-                $photoName = time() . '_' . $photo->getClientOriginalName();
+                $photoName = Str::uuid() . '.' . $photo->extension();
                 $photo->move(public_path('uploads/athletes'), $photoName);
                 $data['photo'] = 'uploads/athletes/' . $photoName;
             }

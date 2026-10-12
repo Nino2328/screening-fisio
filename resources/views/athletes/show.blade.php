@@ -10,6 +10,7 @@
         style="color:#00E676">
         ← Kembali ke Data Atlet
     </a>
+    @if(in_array(auth()->user()->role, ['admin', 'fisio'], true))
     <div class="flex gap-2">
         <button onclick="editAthleteModal()"
             class="px-4 py-2 rounded-lg text-sm font-semibold transition hover:-translate-y-px"
@@ -22,6 +23,7 @@
             Hapus
         </button>
     </div>
+    @endif
 </div>
 
 @if(auth()->user()->role === 'pelatih')

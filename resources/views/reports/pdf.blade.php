@@ -89,7 +89,7 @@
                 <tbody>
                     @foreach ($mentalAssessments as $assessment)
                         <tr>
-                            <td>{{ $assessment->athlete->name }}</td>
+                            <td>{{ $assessment->athlete?->name ?? '-' }}</td>
                             <td>{{ $assessment->assessment_date->format('d M Y H:i') }}</td>
                             <td class="score">{{ $assessment->average_score }}/5.0</td>
                             <td>{{ Str::limit($assessment->overall_assessment, 100) }}</td>
@@ -115,7 +115,7 @@
                 <tbody>
                     @foreach ($taktikAssessments as $assessment)
                         <tr>
-                            <td>{{ $assessment->athlete->name }}</td>
+                            <td>{{ $assessment->athlete?->name ?? '-' }}</td>
                             <td>{{ $assessment->assessment_date->format('d M Y H:i') }}</td>
                             <td class="score">{{ $assessment->average_score }}/5.0</td>
                             <td>{{ Str::limit($assessment->overall_assessment, 100) }}</td>
